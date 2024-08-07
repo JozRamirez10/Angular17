@@ -1,0 +1,80 @@
+<h2>{{title}}</h2>
+
+<div>{{users}}</div>
+<br>
+
+<!-- Boton que modifica una variable boolean -->
+<button (click)="setVisible()">
+  {{visible?'Ocultar':'Mostrar'}}
+</button>
+
+<h3>Forma clásica</h3>
+<!-- If forma clásica -->
+<div *ngIf="visible; else notEnabled">
+  <div>Total: {{counter}}</div>
+  <!-- Iteración por forma clásica -->
+  <table *ngIf="(users != undefined && users.length > 0) else isEmpty"> 
+      <!-- Valida si "users" está definido -->
+      <!-- Valida si "users" tiene elementos -->
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{user}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Template para que se ejecute un else -->
+  <ng-template #isEmpty>
+    <div>No existe registro en el sistema</div>
+  </ng-template>
+</div>
+
+<!-- Template para que se ejecute un else -->
+<ng-template #notEnabled>
+  <div>No disponible la página</div>
+</ng-template>
+
+<!-- ---------------------------------------- -->
+<!-- ---------------------------------------- -->
+
+<h3>Angular 17</h3>
+<!-- If - Angular 17 -->
+@if (visible) {
+  <div>Total: {{counter}}</div>
+  @if (users != undefined && users.length > 0) {
+    <table> 
+      <!-- Valida si "users" está definido -->
+      <!-- Valida si "users" tiene elementos -->
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track $index) {
+          <tr>
+            <td>{{$index + 1}}</td>
+            <td>{{user}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div>No existe registro en el sistema</div>
+  }
+} @else {
+  <div>No disponible la página</div>
+}
+
+<!-- Añadimos otro componente a la vista -->
+<app-counter [title]="subTitle" (counterEmit)="setCounter($event)"></app-counter>
+  <!-- La variable 'title' de appCounter recibe la información de 'subTitle' del componente app -->
+  <!-- La segunda variable indica que app-counter le esta pasando información a app -->

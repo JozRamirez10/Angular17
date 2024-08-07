@@ -1,0 +1,11 @@
+ng new nombreApp
+    - Crea una nueva app
+
+ng server
+    - Levanta el servidor
+
+ng generate component nombreComponente
+    - Genera un nuevo componente
+
+ng generate service nombreService
+    - Crea un componente service
