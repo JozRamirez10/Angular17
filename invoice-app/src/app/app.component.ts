@@ -5,6 +5,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 @Component({
   selector: 'app-root',
   standalone: true,
+  // Se importan los componentes que se van a usar
   imports: [InvoiceComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

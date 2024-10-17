@@ -1,0 +1,38 @@
+---------------------------------
+--- Componentes
+---------------------------------
+Los componentes son usados para incluirse como
+componentes dentro de otros componentes y dentro
+del proyecto y suelen tener dos 
+archivos:
+* ts: Configuración
+* HTML: Vista
+
+Se importan en "app.component.ts" y 
+"app.component.html" respectivamente
+
+---------------------------------
+--- Models
+---------------------------------
+Definición de una clases (En ts)
+* any -> Cualquier tipo de dato
+* Dato sin inicializar, ej: id ! : number
+
+---------------------------------
+--- Services
+---------------------------------
+Conexión a la base de datos y obtención de datos mediante
+el uso de las clases (models)
+Implementación y consultas a APIs
+Sus métodos son usados en los 'Components'
+
+---------------------------------
+--- Data
+---------------------------------
+Simula la información almacenada en una base de 
+datos
+
+---------------------------------
+--- Bootstrap
+---------------------------------
+Se coloca el enlace en index.html
