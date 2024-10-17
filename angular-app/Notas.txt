@@ -1,7 +1,16 @@
+Instalación de Angular:
+    - Instalar Node JS de su página oficial
+        - Con la instalación de Node Js ya viene incorporado NPM
+    - Instalar Angular con el siguiente comando:
+        npm install -g @angular/cli
+            * Tienes que ser sudo
+        ng version
+            Versión de angular
+
 ng new nombreApp
     - Crea una nueva app
 
-ng server
+ng serve
     - Levanta el servidor
 
 ng generate component nombreComponente
