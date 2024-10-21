@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { CatalogComponent } from './catalog/catalog.component';
-import { CartComponent } from './cart/cart.component';
 import { CartItem } from '../models/cartItem';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 
 @Component({
   selector: 'cart-app',
   standalone: true,
-  imports: [CatalogComponent, CartComponent, NavbarComponent],
+  imports: [CatalogComponent, NavbarComponent, CartModalComponent],
   templateUrl: './cart-app.component.html'
 })
 export class CartAppComponent implements OnInit{
@@ -18,7 +18,7 @@ export class CartAppComponent implements OnInit{
 
   items : CartItem[] = [];
 
-  total : number = 0;
+  // total : number = 0;
 
   showCart : boolean = false;
 
@@ -29,7 +29,7 @@ export class CartAppComponent implements OnInit{
     this.items = JSON.parse(sessionStorage.getItem('cart')!) || [];
       // Cuando se inicia el navegador, ve si en la sesión ya existe un carro de compras
       // si no, crea el arreglo vacío
-    this.calculateTotal();
+    // this.calculateTotal();
   }
 
   onAddCart(product : Product) : void {
@@ -47,28 +47,31 @@ export class CartAppComponent implements OnInit{
     }else{
       this.items = [... this.items, {product : {... product}, quantity: 1}];
     }
-    this.calculateTotal();
-    this.saveSession();
+    // this.calculateTotal();
+    // this.saveSession();
   }
 
   onDeleteCart(id : number ) : void {
     this.items = this.items.filter(item => item.product.id !== id);
-    this.calculateTotal();
-    this.saveSession();
+    if(this.items.length == 0){
+      sessionStorage.removeItem('cart');
+    }
+    // this.calculateTotal();
+    // this.saveSession();
   }
 
-  calculateTotal() : void {
-    this.total = this.items.reduce( (accumulator, item) => accumulator + item.quantity * item.product.price, 0);
-  }
+  // calculateTotal() : void {
+  //   this.total = this.items.reduce( (accumulator, item) => accumulator + item.quantity * item.product.price, 0);
+  // }
 
-  // Guarda el carro en la sesión del navegador
-  saveSession() : void {
-    sessionStorage.setItem('cart', JSON.stringify(this.items));
-                                // Construye un json de los elementos que se quieren guardar
-                                // en la sesión
-  }
+  // // Guarda el carro en la sesión del navegador
+  // saveSession() : void {
+  //   sessionStorage.setItem('cart', JSON.stringify(this.items));
+  //                               // Construye un json de los elementos que se quieren guardar
+  //                               // en la sesión
+  // }
 
-  openCart() : void {
+  openCloseCart() : void {
     this.showCart = !this.showCart;
   }
   
