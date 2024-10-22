@@ -1,0 +1,9 @@
+app.routes.ts -> Sirve para definir la ruta(path) de las demás páginas
+    - Se coloca la ruta y el componente al que está asociado
+    - El componente debe importar RouterOulet 
+
+RouterModule -> Permite definir los links a los que será redirigido desde una sección
+    routerLink -> Link al que se quiere acceder
+    state -> Comparte información entre diferentes páginas
+    Al pasar información entre páginas, se puede inyectar en el constructor del elemento que lo recibe
+        -> router : Router

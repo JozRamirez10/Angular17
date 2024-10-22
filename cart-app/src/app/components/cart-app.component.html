@@ -1,12 +1,9 @@
-<navbar [items]="items" (openEventEmitter)="openCloseCart()"/>
+<navbar [items]="items" [total]="total" [products]="products"/>
 
 <div class="container my-4">
-    <h2>Catalogo de Productos App!</h2>
-    <catalog [products]="products" (productEventEmitter)="onAddCart($event)"/>
     
-    @if(showCart){
-        <cart-modal [items]="items" (idProductEventEmitter)="onDeleteCart($event)"
-        (closeEventEmitter)="openCloseCart()"/>
-    }
+    
+    <router-outlet></router-outlet>
+    <!-- Desde aquí se va a realizar la redirección de páginas -->
 </div>
 
