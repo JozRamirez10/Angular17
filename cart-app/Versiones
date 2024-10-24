@@ -1,4 +1,0 @@
-El proyecto actual de carro de compras se divide en diferentes proyectos, dependiendo del commit que se haya realizado:
-- Lateral: Barra lateral del carro de compras.
-- Modal: Modal del carro de compras.
-- Routes: Página independiente del carro de compras.
