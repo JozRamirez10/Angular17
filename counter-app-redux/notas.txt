@@ -1,0 +1,6 @@
+Instalar redux:
+    ng add @ngrx/store@latest
+
+Devtools para google chrome
+    Buscar redux devtools en extensiones de google chrome
+
