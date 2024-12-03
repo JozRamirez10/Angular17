@@ -23,6 +23,7 @@ export class UserComponent implements OnInit{
     private sharingData : SharingDataService, private route : ActivatedRoute){ 
       if(this.router.getCurrentNavigation()?.extras.state){
         this.users = this.router.getCurrentNavigation()?.extras.state!["users"];
+        this.paginator = this.router.getCurrentNavigation()?.extras.state!["paginator"];
       }
   }
 

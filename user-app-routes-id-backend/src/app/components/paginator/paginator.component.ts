@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'paginator',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './paginator.component.html'
 })
 export class PaginatorComponent {

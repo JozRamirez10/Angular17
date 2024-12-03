@@ -55,7 +55,12 @@ export class UserAppComponent implements OnInit{
         {
           next: (userUpdate) => {
             this.users = this.users.map( u => (u.id == userUpdate.id) ? {... userUpdate} : u );
-            this.router.navigate(['/users'], {state: {users: this.users}});
+            this.router.navigate(['/users'], {
+              state: {
+                users: this.users,
+                paginator: this.paginator
+              }
+            });
             Swal.fire({
               title: "Usuario actualizado",
               text: "¡Usuario editado con éxito!",
@@ -72,7 +77,12 @@ export class UserAppComponent implements OnInit{
         this.service.create(user).subscribe( {
           next: userNew => {
             this.users = [... this.users, {... userNew}]
-            this.router.navigate(['/users'], {state: {users: this.users}});
+            this.router.navigate(['/users'], {
+              state: {
+                users: this.users,
+                paginator: this.paginator
+              }
+            });
             Swal.fire({
               title: "Usuario creado",
               text: "¡Usuario creado con éxito!",
@@ -104,7 +114,12 @@ export class UserAppComponent implements OnInit{
           this.service.remove(id).subscribe(() => {
             this.users = this.users.filter(user => user.id != id);
             this.router.navigate(['/users/create'], {skipLocationChange: true}).then(() =>{
-              this.router.navigate(['/users'], {state: {users: this.users}});
+              this.router.navigate(['/users'], {
+                state: {
+                  users: this.users,
+                  paginator: this.paginator
+                }
+              });
             });
           })
           Swal.fire({
