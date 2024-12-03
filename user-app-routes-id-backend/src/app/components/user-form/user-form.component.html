@@ -11,8 +11,13 @@
                 <div>
                     <input class="form-control my-2" placeholder="Nombre" name="name"
                         [(ngModel)]="user.name"
-                        required #name="ngModel"
-                    >
+                        #name="ngModel"
+                    > <!-- required -->
+                    <!-- Validación y error de backend -->
+                    @if(errors?.name){
+                        <div class="text-danger">{{errors.name}}</div>
+                    }
+                    <!-- Validación y error de angular -->
                     @if(name.invalid && (name.dirty || name.touched)){
                         @if(name.errors!['required']){
                             <div class="text-danger">
@@ -25,8 +30,13 @@
                 <div>
                     <input class="form-control my-2" placeholder="Apellido" name="lastname"
                         [(ngModel)]="user.lastname"
-                        required #lastname="ngModel"
-                    >
+                        #lastname="ngModel"
+                    > <!-- required -->
+                    <!-- Validación y error de backend -->
+                    @if(errors?.lastname){
+                        <div class="text-danger">{{errors.lastname}}</div>
+                    }
+                    <!-- Validación y error de angular -->
                     @if(lastname.invalid && (lastname.dirty || lastname.touched)){
                         @if(lastname.errors!['required']){
                             <div class="text-danger">
@@ -39,8 +49,13 @@
                 <div>
                     <input class="form-control my-2" placeholder="Correo" name="email"
                         type="email" [(ngModel)]="user.email" 
-                        required email #email="ngModel"
-                    >
+                        #email="ngModel"
+                    > <!-- required email -->
+                    <!-- Validación y error de backend -->
+                    @if(errors?.email){
+                        <div class="text-danger">{{errors.email}}</div>
+                    }
+                    <!-- Validación y error de angular -->
                     @if(email.invalid && (email.dirty || email.touched)){
                         @if(email.errors!['required']){
                             <div class="text-danger">
@@ -58,8 +73,13 @@
                 <div>
                     <input class="form-control my-2" placeholder="Nombre de ususario" name="username"
                         [(ngModel)]="user.username"
-                        required minlength="8" #username="ngModel"
-                    >
+                        #username="ngModel"
+                    > <!-- required minlength="8" -->
+                    <!-- Validación y error de backend -->
+                    @if(errors?.username){
+                        <div class="text-danger">{{errors.username}}</div>
+                    }
+                    <!-- Validación y error de angular -->
                     @if(username.invalid && (username.dirty || username.touched)){
                         @if(username.errors!['required']){
                             <div class="text-danger">
@@ -77,8 +97,13 @@
                 <div>
                     <input class="form-control my-2" placeholder="Contraseña" name="password"
                         type="password" [(ngModel)]="user.password"
-                        required minlength="6" #password="ngModel"
-                    >
+                        #password="ngModel"
+                    > <!-- required minlength="6" -->
+                    <!-- Validación y error de backend -->
+                    @if(errors?.password){
+                        <div class="text-danger">{{errors.password}}</div>
+                    }
+                    <!-- Validación y error de angular -->
                     @if(password.invalid && (password.dirty || password.touched)){
                         @if(password.errors!['required']){
                             <div class="text-danger">
@@ -94,8 +119,8 @@
                 </div>
             
                 <div>
-                   <button type="submit" class="btn btn-primary m-2"
-                        [disabled]="userForm.invalid">
+                   <button type="submit" class="btn btn-primary m-2">
+                        <!-- [disabled]="userForm.invalid" -->
                             {{(user.id > 0) ? 'Actualizar' : 'Crear' }}
                     </button>
                     
