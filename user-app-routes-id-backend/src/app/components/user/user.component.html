@@ -1,8 +1,10 @@
 <h3>{{title}}</h3>
-    
-<button class="btn btn-primary my-3" [routerLink]="['/users/create']">
-    Crear usuario
-</button>
+ 
+@if(admin){
+    <button class="btn btn-primary my-3" [routerLink]="['/users/create']">
+        Crear usuario
+    </button>
+}
 
 @if (users.length == 0){
     <div class="alert alert-warning">
@@ -17,8 +19,10 @@
                 <th>Apellido</th>
                 <th>Correo</th>
                 <th>Username</th>
-                <th>Actualizar</th>
-                <th>Eliminar</th>
+                @if(admin){
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -29,18 +33,20 @@
                     <td>{{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.username}}</td>
-                    <td>
-                        <button class="btn btn-info btn-sm"
-                            [routerLink]="['/users/edit', user.id]">
-                            Actualizar
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger btn-sm"
-                            (click)="onRemoveUser(user.id)">
-                            Eliminar
-                        </button>
-                    </td>
+                    @if(admin){
+                        <td>
+                            <button class="btn btn-info btn-sm"
+                                [routerLink]="['/users/edit', user.id]">
+                                Actualizar
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm"
+                                (click)="onRemoveUser(user.id)">
+                                Eliminar
+                            </button>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

@@ -93,30 +93,32 @@
                         }
                     }
                 </div>
-            
-                <div>
-                    <input class="form-control my-2" placeholder="Contraseña" name="password"
-                        type="password" [(ngModel)]="user.password"
-                        #password="ngModel"
-                    > <!-- required minlength="6" -->
-                    <!-- Validación y error de backend -->
-                    @if(errors?.password){
-                        <div class="text-danger">{{errors.password}}</div>
-                    }
-                    <!-- Validación y error de angular -->
-                    @if(password.invalid && (password.dirty || password.touched)){
-                        @if(password.errors!['required']){
-                            <div class="text-danger">
-                                La contraseña es requerida
-                            </div>
+                
+                @if(user.id == null){
+                    <div>
+                        <input class="form-control my-2" placeholder="Contraseña" name="password"
+                            type="password" [(ngModel)]="user.password"
+                            #password="ngModel"
+                        > <!-- required minlength="6" -->
+                        <!-- Validación y error de backend -->
+                        @if(errors?.password){
+                            <div class="text-danger">{{errors.password}}</div>
                         }
-                        @if(password.errors!['minlength']){
-                            <div class="text-danger">
-                                La contraseña debe tener al menos 6 caracteres
-                            </div>
+                        <!-- Validación y error de angular -->
+                        @if(password.invalid && (password.dirty || password.touched)){
+                            @if(password.errors!['required']){
+                                <div class="text-danger">
+                                    La contraseña es requerida
+                                </div>
+                            }
+                            @if(password.errors!['minlength']){
+                                <div class="text-danger">
+                                    La contraseña debe tener al menos 6 caracteres
+                                </div>
+                            }
                         }
-                    }
-                </div>
+                    </div>
+                }
             
                 <div>
                    <button type="submit" class="btn btn-primary m-2">

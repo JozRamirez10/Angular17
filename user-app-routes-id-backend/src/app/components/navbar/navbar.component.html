@@ -13,10 +13,23 @@
                 Home
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/users/create']">Nuevo usuario</a>
-          </li>
+          @if(admin){
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/users/create']">Nuevo usuario</a>
+            </li>
+          }
         </ul>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAuth">
+        <span class="nav-item nav-link text-primary mx-3">
+          @if(login.isAuth){
+            {{ login.user.username }}
+            <button class="btn btn-outline-success" (click)="handlerLogout()">Logout</button>
+          } @else {
+            <a class="btn btn-outline-primary"
+              [routerLink]="['/login']">Sign In</a>
+          }
+        </span>
       </div>
     </div>
 </nav>
