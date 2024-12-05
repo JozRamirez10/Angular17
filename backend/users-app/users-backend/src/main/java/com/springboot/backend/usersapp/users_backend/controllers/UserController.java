@@ -44,7 +44,7 @@ public class UserController {
 
     @GetMapping("/page/{page}")
     public Page<User> listPageable(@PathVariable Integer page){ // Numero de páginas
-        Pageable pageable = PageRequest.of(page, 2); // Tamaño de páginas
+        Pageable pageable = PageRequest.of(page, 4); // Tamaño de elementos en la página
         return this.service.findAll(pageable);
     }
 
