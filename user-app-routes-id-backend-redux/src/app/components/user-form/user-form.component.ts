@@ -3,7 +3,7 @@ import { User } from '../../models/user';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { add, find, resetUser, update } from '../../../store/users.action';
+import { add, find, resetUser, update } from '../../../store/users/users.action';
 
 @Component({
   selector: 'user-form',

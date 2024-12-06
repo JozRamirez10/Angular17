@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { User } from "../app/models/user";
+import { User } from "../../app/models/user";
 
 export const load = createAction('load', props<{ page: number}>());
 
